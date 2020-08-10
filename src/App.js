@@ -118,7 +118,7 @@ class App extends Component {
     this.onShowForm();
   }
   onFilter = (filterName, filterStatus) => {
-  
+    console.log(filterName, filterStatus)
     filterStatus = parseInt(filterStatus, 10)
     this.setState({
       filter: {

@@ -10,12 +10,12 @@ export default class Tasklist extends Component {
         }
     }
     onChange = (e)=> {
-        console.log(e)
+        
         var target = e.target;
         var name = target.name
         var value = target.value
         this.props.onFilter(
-            name === 'fitlerName' ? value: this.state.filterName,
+            name === 'filterName' ? value: this.state.filterName,
             name === 'filterStatus' ? value: this.state.filterStatus
         )
         this.setState({
