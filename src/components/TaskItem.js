@@ -14,11 +14,12 @@ export default class TaskItem extends Component {
         var {task, index} = this.props
         return (
             <tr>
-                <td>{index+1}</td>
+                <td className="text-center">{index+1}</td>
                 <td>{task.name}</td>
                 <td className ="text-center">
                     <Badge color ={task.status ? "danger":  "primary"} onClick = {this.onUpdateStatus}>{task.status ? "Activated": "Hidden"}</Badge>
                 </td>
+                <td className ="text-center"> {task.time}<br/>{task.date}</td>
                 <td className = "text-center">
                     <button type = "button" className = "btn btn-warning " onClick ={this.onEdit}> <span className = "fa fa-pencil mr-2"></span>Edit</button>
                     &nbsp;

@@ -36,10 +36,11 @@ export default class Tasklist extends Component {
                             <th className = "text-center"> STT</th>
                             <th className = "text-center"> Name</th>
                             <th className = "text-center"> Status</th>
+                            <th className = "text-center"> Time</th>
                             <th className = "text-center"> Action</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody >
                         <tr>
                             <td></td>
                             <td>

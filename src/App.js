@@ -18,7 +18,7 @@ class App extends Component {
       },
       keyword: '',
       sortBy: 'default',
-      sortValue: 1
+      sortValue: 1,
     }
   }
   componentDidMount() {
@@ -57,6 +57,7 @@ class App extends Component {
   }
 
   onSubmit = (data) => {
+    console.log(data.date, data.time)
     var {tasks} = this.state;
     if (data.id !== '') {
       if(data.status === "true"){
@@ -147,13 +148,17 @@ class App extends Component {
     })
   }
   onDeleteAll = () => {
+    var {tasks} = this.state
+    tasks = []
     this.setState({
-      tasks: []
+      tasks: tasks
     })
+    console.log(tasks)
     localStorage.clear()
   }
   render() {
     var {tasks, isdisplayedForm, taskEditting, filter, keyword, sortBy, sortValue} = this.state
+    console.log(tasks)
     if(filter){
       if(filter.name){
         tasks = tasks.filter(task=>task.name.toLowerCase().indexOf(filter.name) !== -1)
@@ -199,13 +204,13 @@ class App extends Component {
             <Tasklist tasks = {tasks} onUpdateStatus = {this.onUpdateStatus} onDelete = {this.onDelete} onEdit = {this.onEdit} onFilter = {this.onFilter}/>
           </div> 
         </div>
-        <div className="row justify-content-center">
+        {tasks.length !== 0 ? <div className="row justify-content-center">
             <div className="col-3 text-center">
               <button type ="button" className = "btn btn-danger btn-lg text-capitalize mr-2" onClick = {this.onDeleteAll}>
                 <span className = "fa fa-trash mr-2"> </span>
                 DELETE ALL</button>
             </div>
-        </div>
+        </div>: ''}
       </div>
     );
   }

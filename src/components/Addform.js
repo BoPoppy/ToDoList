@@ -9,15 +9,22 @@ export default class Addform extends React.Component {
     this.state = {
       id: '',
       name: '',
+      date: '',
+      time: '',
       status: false
     }
   }
   onChange = (e) => {
+    var {date, time} = this.state
+    date = new Date().toLocaleDateString(); 
+    time = new Date().toLocaleTimeString(); 
     var target = e.target;
     var name = target.name;
     var value = target.value;
     this.setState({
-      [name] : value
+      [name] : value,
+      date: date,
+      time: time
     })
   }
   onSubmit = (e) => {
@@ -48,6 +55,7 @@ export default class Addform extends React.Component {
       this.setState({
         id: nextProps.taskEditting.id,
         name: nextProps.taskEditting.name,
+        date: nextProps.taskEditting.date,
         status: nextProps.taskEditting.status
       })
     }
