@@ -46,6 +46,8 @@ export default class Addform extends React.Component {
       this.setState({
         id: this.props.taskEditting.id,
         name: this.props.taskEditting.name,
+        date: new Date().toLocaleDateString(),
+        time: new Date().toLocaleTimeString(),
         status: this.props.taskEditting.status
       })
     }
@@ -56,6 +58,7 @@ export default class Addform extends React.Component {
         id: nextProps.taskEditting.id,
         name: nextProps.taskEditting.name,
         date: nextProps.taskEditting.date,
+        time: nextProps.taskEditting.time,
         status: nextProps.taskEditting.status
       })
     }
