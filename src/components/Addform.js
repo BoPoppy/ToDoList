@@ -24,7 +24,6 @@ export default class Addform extends React.Component {
     e.preventDefault();
     this.props.onSubmit(this.state)
     this.onClear();
-    this.onCloseForm();
   }
   onCloseForm = () => {
     this.props.onCloseForm();
@@ -35,7 +34,7 @@ export default class Addform extends React.Component {
       status: false
     })
   }
-  componentWillMount(){
+  componentDidMount(){
     if(this.props.taskEditting){
       this.setState({
         id: this.props.taskEditting.id,
