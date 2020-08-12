@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import './index.css'
 export default class Sort extends Component {
     componentWillReceiveProps(nextProps) {
-        console.log(nextProps)
+        console.log(nextProps.sortBy, nextProps.sortValue)
     }
     onClick = (sortBy, sortValue) => {
         this.props.onSort(sortBy, sortValue)
@@ -15,6 +15,8 @@ export default class Sort extends Component {
                     Sort
                 </button>
                 <div className="dropdown-menu" aria-labelledby = "dropdownMenu1">
+                    <button className={(this.props.sortBy === 'default' && this.props.sortValue === 1) ? "dropdown-item sort-selected": "dropdown-item"} onClick ={()=> this.onClick('default', 1)}>
+                        Default</button>
                     <button className={(this.props.sortBy === 'name' && this.props.sortValue === 1) ? "dropdown-item sort-selected": "dropdown-item"} onClick ={()=> this.onClick('name', 1)}>
                         <span className = "fa fa-sort-alpha-asc"></span> Name A-Z</button>
                     <button className={(this.props.sortBy === 'name' && this.props.sortValue === -1) ? "dropdown-item sort-selected": "dropdown-item"} onClick ={()=> this.onClick('name', -1)}>

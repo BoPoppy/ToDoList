@@ -17,7 +17,7 @@ class App extends Component {
         status: -1
       },
       keyword: '',
-      sortBy: 'name',
+      sortBy: 'default',
       sortValue: 1
     }
   }
@@ -146,6 +146,12 @@ class App extends Component {
       sortValue: sortValue
     })
   }
+  onDeleteAll = () => {
+    this.setState({
+      tasks: []
+    })
+    localStorage.clear()
+  }
   render() {
     var {tasks, isdisplayedForm, taskEditting, filter, keyword, sortBy, sortValue} = this.state
     if(filter){
@@ -168,7 +174,7 @@ class App extends Component {
         else return 0
       })
     }
-    else {
+    else if(sortBy === 'status') {
       tasks.sort((a, b)=> {
         if(a.status > b.status) return -sortValue
         else if (a.status< b.status) return sortValue
@@ -191,7 +197,14 @@ class App extends Component {
             <button type ="button" className = "btn btn-primary text-capitalize mr-2" onClick = {this.toggleForm}><span className = "fa fa-plus mr-2"> </span>add work</button>
             <Control onSearch = {this.onSearch} onClear = {this.onClear} onSort = {this.onSort} sortBy = {sortBy} sortValue = {sortValue}/>
             <Tasklist tasks = {tasks} onUpdateStatus = {this.onUpdateStatus} onDelete = {this.onDelete} onEdit = {this.onEdit} onFilter = {this.onFilter}/>
+          </div> 
         </div>
+        <div className="row justify-content-center">
+            <div className="col-3 text-center">
+              <button type ="button" className = "btn btn-danger btn-lg text-capitalize mr-2" onClick = {this.onDeleteAll}>
+                <span className = "fa fa-trash mr-2"> </span>
+                DELETE ALL</button>
+            </div>
         </div>
       </div>
     );
