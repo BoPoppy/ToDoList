@@ -68,6 +68,7 @@ class App extends Component {
       }
       var index = this.findIndex(data.id)
       tasks[index] = data
+      this.onCloseForm()
     }
     else {
       data.id = uuid();
